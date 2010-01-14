@@ -3,7 +3,8 @@ Capture cam;
 
 void setup() {
   size(640, 480);
-  cam = newCapture(this, 640, 480, 30);
+  String s = "IIDC FireWire Video"
+  cam = newCapture(s, 640, 480, 30);
 }
 
 void draw() {
