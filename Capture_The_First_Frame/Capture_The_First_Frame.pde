@@ -1,6 +1,5 @@
 import processing.video.*; 
 Capture myCapture;
-x = myCapture;
  
 void setup() { 
   size(640, 480);
@@ -13,10 +12,11 @@ void draw() {
     myCapture.read(); 
   } 
   image(myCapture, 0, 0);
-  if(x == myCapture);
-  saveFrame();
+}
+  if(myCaptureavailable()) {
+  saveFrame("image-0001.tif");
   stop();
-  else { noLoop();
+  } else { noLoop();
 }
 
 }
