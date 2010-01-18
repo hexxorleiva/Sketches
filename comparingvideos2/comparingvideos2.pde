@@ -22,7 +22,7 @@ void draw() {
   if (video.available()) {
     video.read(); // Read a new video frame
     image(cam, 0, 0);
-    video.loadPixels(); // Make the pixels of video available
+    video.loadPixels();
     // Difference between the current frame and the stored background
     int presenceSum = 0;
     for (int i = 0; i < cam.width * cam.height; i++) { // For each pixel in the video frame...
@@ -36,9 +36,3 @@ void draw() {
     updatePixels(); // Notify that the pixels[] array has changed
   }
 }
-
-// When a key is pressed, capture the background image into the backgroundPixels
-// buffer, by copying each of the current frame’s pixels into it.
-
-
-
