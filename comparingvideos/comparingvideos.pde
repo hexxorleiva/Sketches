@@ -1,23 +1,21 @@
 import processing.video.*;
-
 int numPixels;
 int camPixels;
 int[] backgroundPixels;
-// int[] cam;
-Movie cam;
 Capture video;
+Movie cam;
 
 void setup() {
-  // Change size to 320 x 240 if too slow at 640 x 480
   size(640, 480, P2D); 
   
   video = new Capture(this, width, height, 24);
   numPixels = video.width * video.height;
   // Create array to store the background image
-  camPixels = cam.width * cam.height;
   cam = new Movie(this, "cam.mov");
+  cam.read();
   cam.loop();
-  backgroundPixels = new int[camPixels];
+  camPixels = cam.width * cam.height;
+  backgroundPixels = new int[numPixels];
   // Make the pixels[] array available for direct manipulation
   loadPixels();
 }
@@ -33,7 +31,6 @@ void draw() {
       // of the background in that spot
       color currColor = video.pixels[i];
       color bkgdColor = backgroundPixels[i];
-      // color bkgdColor = backgroundPixels[i];
       // Extract the red, green, and blue components of the current pixel’s color
       int currR = (currColor >> 16) & 0xFF;
       int currG = (currColor >> 8) & 0xFF;
